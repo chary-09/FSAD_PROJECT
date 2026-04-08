@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-hotel",
+      "description": "Luxury hotel lobby",
+      "imageUrl": "https://images.unsplash.com/photo-1546967900-1bea5f16b69d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aG90ZWwlMjBsb2JieXxlbnwwfHx8fDE3NzEwMDcyNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel lobby"
+    },
+    {
+      "id": "room-deluxe",
+      "description": "Deluxe King Room",
+      "imageUrl": "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsdXh1cnklMjByb29tfGVufDB8fHx8MTc3MTA0NzEzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury room"
+    },
+    {
+      "id": "room-suite",
+      "description": "Presidential Suite",
+      "imageUrl": "https://images.unsplash.com/photo-1573052905904-34ad8c27f0cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxob3RlbCUyMHN1aXRlfGVufDB8fHx8MTc3MTAwNzI2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel suite"
+    },
+    {
+      "id": "customer-avatar",
+      "description": "Customer profile placeholder",
+      "imageUrl": "https://images.unsplash.com/photo-1590086782792-42dd2350140d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzEwNDg3OTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    }
+  ]
+}

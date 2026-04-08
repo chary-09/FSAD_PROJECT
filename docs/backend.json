@@ -1,0 +1,292 @@
+{
+  "entities": {
+    "Customer": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Customer",
+      "type": "object",
+      "description": "Represents a hotel guest or client, storing their personal and contact information. This entity is central to customer management and personalization features.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Customer entity."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "The first name of the customer."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "The last name of the customer."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the customer, used for communication and notifications.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The primary phone number of the customer."
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical address of the customer (e.g., street, city, postal code, country)."
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "description": "The customer's date of birth (YYYY-MM-DD), potentially used for personalized offers or age verification.",
+          "format": "date"
+        },
+        "loyaltyProgramMember": {
+          "type": "boolean",
+          "description": "Indicates if the customer is enrolled in the hotel's loyalty program, relevant for automated suggestions."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the customer record was first created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the customer record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email"
+      ]
+    },
+    "Room": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Room",
+      "type": "object",
+      "description": "Represents a physical room within the hotel, detailing its characteristics, pricing, and current status. Essential for room management and availability tracking.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Room entity."
+        },
+        "roomNumber": {
+          "type": "string",
+          "description": "The unique number or identifier of the room within the hotel (e.g., '101', 'Penthouse Suite A')."
+        },
+        "roomType": {
+          "type": "string",
+          "description": "The category or type of the room (e.g., 'Standard', 'Deluxe', 'Suite')."
+        },
+        "bedType": {
+          "type": "string",
+          "description": "The type of bed(s) available in the room (e.g., 'King', 'Queen', 'Twin')."
+        },
+        "capacity": {
+          "type": "number",
+          "description": "The maximum number of guests the room can accommodate."
+        },
+        "pricePerNight": {
+          "type": "number",
+          "description": "The base price for one night's stay in this room."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the room, its features, and view."
+        },
+        "amenities": {
+          "type": "array",
+          "description": "A list of amenities available in the room (e.g., 'TV', 'WiFi', 'Mini Bar', 'Balcony').",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "The current operational status of the room (e.g., 'Available', 'Occupied', 'Under Maintenance', 'Dirty')."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the room record was first created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the room record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "roomNumber",
+        "roomType",
+        "capacity",
+        "pricePerNight",
+        "status"
+      ]
+    },
+    "Reservation": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Reservation",
+      "type": "object",
+      "description": "Represents a booking made by a customer for a specific room during a defined period. This entity handles reservation management and links customers to rooms.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Reservation entity."
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Reference to the Customer who made the reservation. (Relationship: Customer 1:N Reservation)"
+        },
+        "roomId": {
+          "type": "string",
+          "description": "Reference to the Room being reserved for this booking. (Relationship: Room 1:N Reservation)"
+        },
+        "checkInDate": {
+          "type": "string",
+          "description": "The scheduled date for the guest to check into the room (YYYY-MM-DD).",
+          "format": "date"
+        },
+        "checkOutDate": {
+          "type": "string",
+          "description": "The scheduled date for the guest to check out of the room (YYYY-MM-DD).",
+          "format": "date"
+        },
+        "numberOfGuests": {
+          "type": "number",
+          "description": "The total number of guests included in this reservation."
+        },
+        "totalPrice": {
+          "type": "number",
+          "description": "The total calculated price for the entire reservation duration, including any additional services or discounts."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the reservation (e.g., 'Pending', 'Confirmed', 'Checked-In', 'Checked-Out', 'Cancelled')."
+        },
+        "specialRequests": {
+          "type": "string",
+          "description": "Any special requests made by the customer for this reservation (e.g., 'extra towels', 'crib', 'non-smoking room')."
+        },
+        "staffNotes": {
+          "type": "string",
+          "description": "Internal notes by staff regarding the reservation, which may include details from automated suggestions or other relevant information."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the reservation record was first created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the reservation record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "customerId",
+        "roomId",
+        "checkInDate",
+        "checkOutDate",
+        "numberOfGuests",
+        "totalPrice",
+        "status"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/customers/{customerId}",
+        "definition": {
+          "entityName": "Customer",
+          "schema": {
+            "$ref": "#/backend/entities/Customer"
+          },
+          "description": "Stores individual customer profiles. The 'customerId' typically corresponds to the Firebase Authentication UID when customers manage their own profiles. Includes denormalized 'id' for direct ownership checks.",
+          "params": [
+            {
+              "name": "customerId",
+              "description": "Unique identifier for the customer, typically matching the Firebase Auth UID for self-managed profiles."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/rooms/{roomId}",
+        "definition": {
+          "entityName": "Room",
+          "schema": {
+            "$ref": "#/backend/entities/Room"
+          },
+          "description": "Contains details for each hotel room, including type, capacity, pricing, and status. Accessible by staff for management, potentially readable by public for availability.",
+          "params": [
+            {
+              "name": "roomId",
+              "description": "Unique identifier for the room."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/reservations/{reservationId}",
+        "definition": {
+          "entityName": "Reservation",
+          "schema": {
+            "$ref": "#/backend/entities/Reservation"
+          },
+          "description": "A top-level collection for all reservations. Primarily used by staff for comprehensive management and reporting. Contains 'customerId' and 'roomId' as references.",
+          "params": [
+            {
+              "name": "reservationId",
+              "description": "Unique identifier for the reservation."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/customers/{customerId}/reservations/{reservationId}",
+        "definition": {
+          "entityName": "Reservation",
+          "schema": {
+            "$ref": "#/backend/entities/Reservation"
+          },
+          "description": "A subcollection mirroring reservations, specific to a customer. Allows individual customers (matching 'customerId' to 'request.auth.uid') to securely view and manage their own bookings. Includes denormalized 'customerId' in the path for authorization independence.",
+          "params": [
+            {
+              "name": "customerId",
+              "description": "Unique identifier for the customer, matching the parent 'customerId'."
+            },
+            {
+              "name": "reservationId",
+              "description": "Unique identifier for the specific reservation."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminId}",
+        "definition": {
+          "entityName": "admin",
+          "schema": {
+            "$ref": "#/backend/entities/Customer"
+          },
+          "description": "A collection to store administrative roles, where 'adminId' is the Firebase Authentication UID of an administrator. Its mere existence grants admin privileges, supporting Database-Backed Access Control (DBAC).",
+          "params": [
+            {
+              "name": "adminId",
+              "description": "The Firebase Authentication UID of an administrative user."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure for the Buildoholics HMS prioritizes secure, scalable, and debuggable access patterns by adhering to the core design principles of Authorization Independence, Structural Segregation, and Access Modeling. This approach minimizes complexity in security rules and ensures efficient queries.\n\n**Authorization Independence:** This is achieved primarily through strategic denormalization and path-based ownership. Every document in the subcollections (`/customers/{customerId}/reservations/{reservationId}`) explicitly includes the `customerId` in its path, allowing security rules to verify `request.auth.uid == customerId` without requiring expensive and complex `get()` calls to parent documents. For the top-level `reservations` collection, while it contains `customerId` and `roomId`, staff access is granted globally, simplifying rules by avoiding multi-document lookups. The `roles_admin/{adminId}` collection is a prime example, where the existence of a document at a path matching `request.auth.uid` directly grants administrative permissions without any cross-collection `get()` operations.\n\n**Querying with Authorization (QAPs):** The structure is designed to support secure and efficient `list` operations (QAPs):\n\n1.  **Rooms:** The `/rooms` collection allows staff to list all rooms, which can then be filtered client-side. Public users can also list rooms, typically with a `status == 'Available'` filter, directly supported by the rules.\n2.  **Customers:** The `/customers` collection enables staff to list and manage all customer profiles. For a customer to view or update their own profile, rules on `/customers/{customerId}` will verify `request.auth.uid == customerId`, ensuring only their specific record is accessed.\n3.  **All Reservations (Staff):** The top-level `/reservations` collection provides staff with a single point to list all reservations, facilitating overall management and reporting. Rules here will enforce staff-only access based on their `roles_admin` status.\n4.  **Customer's Own Reservations:** The `/customers/{customerId}/reservations` subcollection is critical for QAPs. A logged-in customer (`request.auth.uid`) can securely list *only their own* reservations by querying `/customers/$(request.auth.uid)/reservations`. This design ensures that rules do not act as filters (i.e., a `list` operation will only return documents that the user is authorized to see in the first place, rather than fetching all and then filtering).\n\n**Structural Segregation:** Data with different security postures is separated into distinct collections. For example, `rooms` are globally accessible (for staff CRUD, public read), `customers` are globally accessible to staff but privately owned by individual customers, and `reservations` are managed by staff but also exposed to customers via a private subcollection. This keeps security rules simple and specific to each collection's intent. All documents within a given collection or subcollection share the same authorization requirements, preventing mixed-access documents."
+  }
+}

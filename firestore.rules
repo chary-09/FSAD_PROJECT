@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * THE OVERLORD SECURITY PROTOCOL - PROTOTYPE v1
+     * 
+     * Core Philosophy: For the purpose of this prototype, we enforce a simplified
+     * model where any authenticated user (The Administrator) has full access
+     * to the system data. In production, this would be restricted via roles_admin.
+     */
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description Publicly viewable rooms for browsing available shelter.
+     */
+    match /rooms/{roomId} {
+      allow get, list: if true;
+      allow write: if isSignedIn();
+    }
+
+    /**
+     * @description Everything else requires a verified uplink (Authentication).
+     */
+    match /{path=**} {
+      allow read, write: if isSignedIn();
+    }
+  }
+}
